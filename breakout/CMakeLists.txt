@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.13)
+project (breakout)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSOIL -lglfw -lGLEW -framework GLUT -framework OpenGL -framework Cocoa")
+
+add_definitions(-DGL_SILENCE_DEPRECATION=silence)
+link_directories(/usr/local/lib)
+include_directories(/usr/local/include/eigen3/)
+include_directories(/usr/local/include/)
+include_directories(src)
+file(GLOB_RECURSE SRCS src/*.cpp )
+file(GLOB_RECURSE HDRS src/*.h)
+message("SRCS " ${SRCS})
+message("HDRS " ${HDRS})
+add_executable(breakout ${SRCS} ${HDRS})
